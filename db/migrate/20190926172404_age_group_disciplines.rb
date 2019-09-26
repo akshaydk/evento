@@ -1,8 +1,6 @@
 class AgeGroupDisciplines < ActiveRecord::Migration[5.2]
   def change
-    create_table :age_group_disciplines, :id => false do |t|
-      t.integer :age_group_id
-      t.integer :discipline_id
+    create_join_table :age_groups, :disciplines do |t|
     end
   end
 end

@@ -12,15 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2019_09_26_172404) do
 
-  create_table "age_group_disciplines", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "age_group_id"
-    t.integer "discipline_id"
-  end
-
   create_table "age_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "age_groups_disciplines", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "age_group_id", null: false
+    t.bigint "discipline_id", null: false
   end
 
   create_table "disciplines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
