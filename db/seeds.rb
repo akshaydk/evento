@@ -1,7 +1,27 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+age_group_list = [
+  '5-7',
+  '7-9',
+  '9-11',
+  '11-14',
+  '14-17',
+  '17-30',
+  '30 and above'
+]
+
+disciplines_list = [
+  'ADJUSTABLE',
+  'SPEED_QUAD',
+  'SPEED-INLINE',
+  'ARTISTIC',
+  'ROLLER HOCKEY',
+  'INLINE HOCKEY',
+  'INLINE FREESTYLE'
+]
+
+age_group_list.each do |name|
+  AgeGroup.create(name: name)
+end
+
+disciplines_list.each do |name|
+  Discipline.create(name: name)
+end
