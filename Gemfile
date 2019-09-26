@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'mysql2', '~> 0.5.2'
+gem 'turbolinks'
+gem 'coffee-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -23,6 +25,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'binding_of_caller'
+  gem 'better_errors'
 end
 
 group :test do
