@@ -1,0 +1,42 @@
+<%= form_with(model: competition, local: true) do |form| %>
+  <% if competition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
+
+      <ul>
+      <% competition.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reg_open %>
+    <%= form.date_select :reg_open %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reg_close %>
+    <%= form.date_select :reg_close %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comp_start %>
+    <%= form.date_select :comp_start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comp_end_date %>
+    <%= form.date_select :comp_end_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
