@@ -22,10 +22,10 @@ class UsersController < ApplicationController
     @user.email = params_user[:email]
     @user.phone = params_user[:phone]
     @user.gender = params_user[:gender]
-    # @user.occupation = params_user[:occupation]
+    @user.occupation = params_user[:occupation]
     @user.address = params_user[:address]
-    # @user.district = params_user[:district]
-    @user.pin_code = params_user[:pincode]
+    @user.district = params_user[:district]
+    @user.pin_code = params_user[:pin_code]
 
     @user.save!
 

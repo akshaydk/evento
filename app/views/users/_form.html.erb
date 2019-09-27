@@ -13,7 +13,7 @@
       <%= f.text_field :gender, value: @user.gender, class: 'form-control' %>
 
       <%= f.label "Mobile: "%>
-      <%= f.text_field :mobile, value: @user.phone, class: 'form-control' %>
+      <%= f.text_field :phone, value: @user.phone, class: 'form-control' %>
 
       <%= f.label "Email: "%>
       <%= f.text_field :email, value: @user.email, class: 'form-control' %>
@@ -21,10 +21,18 @@
       <%= f.label "Address: "%>
       <%= f.text_area :address, value: @user.address, class: 'form-control' %>
 
+      <div class="dropdown">
+        <%= f.label "District: "%>
+        <%= f.collection_select :district, DISTRICTS,:first,:last %>
+      </div>
+
       <%= f.label "Pincode: "%>
       <%= f.text_field :pin_code, value: @user.pin_code, class: 'form-control' %>
 
-
+      <div class="dropdown">
+        <%= f.label "Occupation: "%>
+        <%= f.collection_select :occupation, OCCUPATION,:first,:last %>
+      </div>
     </div>
 
     <div class="form-inputs" >
