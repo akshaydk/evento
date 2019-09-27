@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -12,4 +10,14 @@ class User < ApplicationRecord
     end
 
   has_many :event_registrations
+
+  def needsEdit?
+    if self.full_name.blank? ||  self.rsfi_id.blank? || self.email.blank? || self.phone.blank? || self.blank? ||
+        self.address.blank? ||  self.district.blank? || self.pin_code.blank?
+      return true
+    else
+      return false
+    end
+  end
+
 end
