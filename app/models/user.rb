@@ -20,4 +20,30 @@ class User < ApplicationRecord
     end
   end
 
+  def getAgeGroup(year_of_competition)
+    candidate_year = self.dob.strftime("%Y")
+    age = year_of_competition.to_i - candidate_year.to_i
+
+    if age >= 5 and age < 7
+      age_group = '5-7'
+
+    elsif age >= 7 and age < 9
+      age_group = '7-9'
+
+    elsif age >= 9 and age < 11
+      age_group = '9-11'
+
+    elsif age >= 11 and age < 14
+      age_group = '11-14'
+
+    elsif age >= 14 and age < 17
+      age_group = '14-17'
+
+    else
+      age_group = '17 and above'
+    end
+
+    return AgeGroup.where(name: age_group)
+  end
+
 end

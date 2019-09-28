@@ -16,7 +16,7 @@ class EventRegistrationsController < ApplicationController
   def new
     @competition = Competition.where(id: params[:competition_id]).first
     @user = User.where(id: params[:user_id]).first
-    # @disciplines = Disciplines.all
+    @age_gourp = @user.getAgeGroup(@competition.comp_start.strftime("%Y"))
 
     @event_registration = EventRegistration.new
   end
