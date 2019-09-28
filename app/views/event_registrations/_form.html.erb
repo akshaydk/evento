@@ -23,8 +23,12 @@
 
       <%= f.label "Pincode: "%>
       <%= f.text_field :pin_code, value: @user.pin_code, class: 'form-control', readonly: true%>
+<% end %>
 
-      <%= f.input :accept, as: :boolean, checked_value: true, unchecked_value: false %>
+<%= simple_form_for @event_registration do |f| %>
+      <%= f.text_field :competition_id, value: @competition.id, class: 'form-control', hidden: true%>
+      <%= f.text_field :user_id, value: @user.id, class: 'form-control', hidden: true%>
+      <%= f.text_field :events, value: '[a,b,c]', class: 'form-control', hidden: true%>
     </div>
 
     <div class="form-inputs" >

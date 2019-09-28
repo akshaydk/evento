@@ -28,17 +28,11 @@ class EventRegistrationsController < ApplicationController
   # POST /event_registrations
   # POST /event_registrations.json
   def create
+    @competition = Competition.where(id: params[:event_registration][:competition_id]).first
     @event_registration = EventRegistration.new(event_registration_params)
 
-    respond_to do |format|
-      if @event_registration.save
-        format.html { redirect_to @event_registration, notice: 'Event registration was successfully created.' }
-        format.json { render :show, status: :created, location: @event_registration }
-      else
-        format.html { render :new }
-        format.json { render json: @event_registration.errors, status: :unprocessable_entity }
-      end
-    end
+    debugger
+    @event_registration.save!
   end
 
   # PATCH/PUT /event_registrations/1
@@ -73,6 +67,6 @@ class EventRegistrationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_registration_params
-      params.require(:competition_id).permit(:competition_id, :user_id)
+      params.require(:event_registration).permit(:competition_id, :user_id, :events)
     end
 end

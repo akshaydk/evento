@@ -1,3 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container col-6">
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+<%= simple_form_for @user do |f| %>
+    <div class="form-inputs" >
+      <%= f.label "RSFI ID: "%>
+      <%= f.text_field :competition_id, type: :text, value: @user.rsfi_id, class: 'form-control', readonly: true %>
+
+      <%= f.label "Full Name: "%>
+      <%= f.text_field :full_name, value: @user.id, class: 'form-control', readonly: true%>
+
+      <%= f.label "DOB: "%>
+      <%= f.text_field :dob, value: @user.dob, class: 'form-control', readonly: true%>
+
+      <%= f.label "Gender: "%>
+      <%= f.text_field :gender, value: @user.gender, class: 'form-control', readonly: true%>
+
+      <%= f.label "Mobile: "%>
+      <%= f.text_field :mobile, value: @user.phone, class: 'form-control', readonly: true%>
+
+      <%= f.label "Email: "%>
+      <%= f.text_field :email, value: @user.email, class: 'form-control', readonly: true%>
+
+      <%= f.label "Address: "%>
+      <%= f.text_area :address, value: @user.address, class: 'form-control', readonly: true%>
+
+      <%= f.label "Pincode: "%>
+      <%= f.text_field :pin_code, value: @user.pin_code, class: 'form-control', readonly: true%>
+
+    </div>
+
+  <% end %>
+
+  <%= link_to 'Edit', edit_user_path(@user.id) %>
+
+  <%= link_to 'Events', event_registrations_path(@user.id) %>
+  </div>
+

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :event_registrations
-  resources :registrations
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret',
@@ -11,5 +10,6 @@ Rails.application.routes.draw do
   root to: 'disciplines#index'
   resources :disciplines
   resources :age_groups
-  resources :competition
+  resources :competitions
+  resources :users, only: [:show, :update, :edit]
 end

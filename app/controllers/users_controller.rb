@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def edit
-    @user = current_user
+    @user = User.where(id: params[:id]).first
 
     @districts = [['a','b'],['c','d']]
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     @user.save!
 
-    redirect_to :competition_url
+    redirect_to :event_registrations
   end
 
   private
