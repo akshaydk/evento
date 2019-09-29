@@ -9,7 +9,10 @@ class User < ApplicationRecord
       self.role ||= :user
     end
 
+  has_many :competitions
   has_many :event_registrations
+  has_many :events, through: :competitions
+
 
   def needsEdit?
     if self.full_name.blank? ||  self.rsfi_id.blank? || self.email.blank? || self.phone.blank? || self.blank? ||
