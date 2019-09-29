@@ -31,7 +31,6 @@ class EventRegistrationsController < ApplicationController
     @competition = Competition.where(id: params[:event_registration][:competition_id]).first
     @event_registration = EventRegistration.new(event_registration_params)
 
-    debugger
     @event_registration.save!
   end
 
