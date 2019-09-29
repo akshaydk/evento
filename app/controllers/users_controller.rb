@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.first
+    @user = current_user
+    debugger
     if @user.needsEdit?
       return render('users/edit')
     end
