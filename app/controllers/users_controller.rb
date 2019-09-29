@@ -2,8 +2,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.where(id: params[:id]).first
-
-    @districts = [['a','b'],['c','d']]
   end
 
   def show
