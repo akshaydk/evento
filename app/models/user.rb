@@ -46,7 +46,7 @@ class User < ApplicationRecord
       age_group = '17 and above'
     end
 
-    return AgeGroup.where(name: age_group)
+    return AgeGroup.where(name: age_group).first
   end
 
 end

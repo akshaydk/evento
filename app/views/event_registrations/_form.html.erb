@@ -28,7 +28,11 @@
 <%= simple_form_for @event_registration do |f| %>
       <%= f.text_field :competition_id, value: @competition.id, class: 'form-control', hidden: true%>
       <%= f.text_field :user_id, value: @user.id, class: 'form-control', hidden: true%>
-      <%= f.text_field :events, value: '[a,b,c]', class: 'form-control', hidden: true%>
+      <% events = current_user.getAgeGroup(@competition.comp_start.strftime("%Y")).events %>
+      <% events.each do |ev| %>
+        <%= f.check_box :events, { multiple: true }, ev.event_name %>
+        <%= f.label ev.event_name %>
+      <% end %>
     </div>
 
     <div class="form-inputs" >

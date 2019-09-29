@@ -66,6 +66,6 @@ class EventRegistrationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_registration_params
-      params.require(:event_registration).permit(:competition_id, :user_id, :events)
+      params.require(:event_registration).permit(:competition_id, :user_id, events:[])
     end
 end
