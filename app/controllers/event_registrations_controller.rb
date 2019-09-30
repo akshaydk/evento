@@ -15,8 +15,8 @@ class EventRegistrationsController < ApplicationController
   # GET /event_registrations/new
   def new
     @competition = Competition.where(id: params[:competition_id]).first
-    @user = User.where(id: params[:user_id]).first
-    @age_gourp = @user.getAgeGroup(@competition.comp_start.strftime("%Y"))
+    @user = User.where(id: current_user.id).first
+    @age_group = @user.getAgeGroup(@competition.comp_start.strftime("%Y"))
 
     @event_registration = EventRegistration.new
   end
@@ -66,6 +66,6 @@ class EventRegistrationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_registration_params
-      params.require(:event_registration).permit(:competition_id, :user_id, :events)
+      params.require(:event_registration).permit(:competition_id, :user_id, events:[])
     end
 end
