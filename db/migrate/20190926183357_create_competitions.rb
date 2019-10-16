@@ -5,7 +5,7 @@ class CreateCompetitions < ActiveRecord::Migration[5.2]
       t.date :reg_open
       t.date :reg_close
       t.date :comp_start
-      t.string :comp_end_date
+      t.date :comp_end_date
 
       t.timestamps
     end

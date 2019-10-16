@@ -4,30 +4,38 @@
       <%= f.text_field :competition_id, type: :text, value: @user.rsfi_id, class: 'form-control', readonly: true %>
 
       <%= f.label "Full Name: "%>
-      <%= f.text_field :full_name, value: @user.full_name, class: 'form-control', readonly: true%>
+      <%= f.text_field :full_name, value: @user.full_name, class: 'form-control', readonly: true %>
 
       <%= f.label "DOB: "%>
-      <%= f.date_field :dob, value: @user.dob, class: 'form-control', readonly: true%>
+      <%= f.date_field :dob, value: @user.dob, class: 'form-control', readonly: true %>
 
       <%= f.label "Gender: "%>
-      <%= f.text_field :gender, value: @user.gender, class: 'form-control', readonly: true%>
+      <%= f.text_field :gender, value: @user.gender, class: 'form-control', readonly: true %>
 
       <%= f.label "Mobile: "%>
-      <%= f.text_field :mobile, value: @user.phone, class: 'form-control', readonly: true%>
+      <%= f.text_field :mobile, value: @user.phone, class: 'form-control', readonly: true %>
 
       <%= f.label "Email: "%>
-      <%= f.text_field :email, value: @user.email, class: 'form-control', readonly: true%>
+      <%= f.text_field :email, value: @user.email, class: 'form-control', readonly: true %>
 
       <%= f.label "Address: "%>
-      <%= f.text_area :address, value: @user.address, class: 'form-control', readonly: true%>
+      <%= f.text_area :address, value: @user.address, class: 'form-control', readonly: true %>
 
       <%= f.label "Pincode: "%>
-      <%= f.text_field :pin_code, value: @user.pin_code, class: 'form-control', readonly: true%>
+      <%= f.text_field :pin_code, value: @user.pin_code, class: 'form-control', readonly: true %>
 <% end %>
 
 <%= simple_form_for @event_registration do |f| %>
-      <%= f.text_field :competition_id, value: @competition.id, class: 'form-control', hidden: true%>
-      <%= f.text_field :user_id, value: @user.id, class: 'form-control', hidden: true%>
+      <%= f.text_field :competition_id, value: @competition.id, class: 'form-control', hidden: true %>
+      <%= f.text_field :user_id, value: @user.id, class: 'form-control', hidden: true %>
+
+      <% Discipline.select(:id, :name).each do |d| %>
+        <%= f.check_box :discipline_id, value: d.id %>
+        <%= f.label d.name %>
+      <% end %>
+
+      <%= f.text_field :user_id, value: @user.id, class: 'form-control', hidden: true %>
+
       <% events = current_user.getAgeGroup(@competition.comp_start.strftime("%Y")).events %>
       <% events.each do |ev| %>
         <%= f.check_box :events, { multiple: true }, ev.event_name %>
