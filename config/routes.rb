@@ -8,9 +8,9 @@ Rails.application.routes.draw do
                                                  registration: 'register', sign_up: 'cmon_let_me_in' }
 
 
-  root to: 'disciplines#index'
-  resources :disciplines
-  resources :age_groups
+  root to: 'event_registrations#index'
+  # resources :disciplines
+  # resources :age_groups
   resources :competitions
   resources :users, only: [:show, :update, :edit]
 end
