@@ -18,7 +18,6 @@ class EventRegistrationsController < ApplicationController
 
   # GET /event_registrations/new
   def new
-
     @competition = Competition.where(id: params[:competition_id]).first
     @user = User.where(id: current_user.id).first
 
@@ -77,6 +76,6 @@ class EventRegistrationsController < ApplicationController
     end
 
     def already_registered?(competition_id,  user_id)
-      return EventRegistration.where(competition_id: competition_id, user_id: user_id).blank?
+      return EventRegistration.where(competition_id: competition_id, user_id: user_id).present?
     end
 end
