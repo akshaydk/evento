@@ -10,12 +10,20 @@ class EventRegistrationsController < ApplicationController
   end
 
   def show
+    @competition = Competition.where(id: params[:competition_id]).first
+    @user = User.where(id: current_user.id).first
+
+    @events = EventRegistration.where(competition_id: competition_id, user_id: user_id).first.events
   end
 
   # GET /event_registrations/new
   def new
+
     @competition = Competition.where(id: params[:competition_id]).first
     @user = User.where(id: current_user.id).first
+
+    return render :show, params: @competition if already_registered?(params[:competition_id], params[:user_id])
+
     @age_group = @user.getAgeGroup(@competition.comp_start.strftime("%Y"))
 
     @event_registration = EventRegistration.new
@@ -30,7 +38,6 @@ class EventRegistrationsController < ApplicationController
   def create
     @competition = Competition.where(id: params[:event_registration][:competition_id]).first
     @event_registration = EventRegistration.new(event_registration_params)
-
     @event_registration.save!
   end
 
@@ -67,5 +74,9 @@ class EventRegistrationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_registration_params
       params.require(:event_registration).permit(:competition_id, :user_id, events:[])
+    end
+
+    def already_registered?(competition_id,  user_id)
+      return EventRegistration.where(competition_id: competition_id, user_id: user_id).blank?
     end
 end
