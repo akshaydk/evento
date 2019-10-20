@@ -1,37 +1,60 @@
-<div class="container col-6">
 
+<section class="section">
+<div class="container">
+  <div class="row">
+    <div class="container container--mini">
 <%= simple_form_for @user do |f| %>
-    <div class="form-inputs" >
+    
+
+    <div class="form-group">
       <%= f.label "RSFI ID: "%>
       <%= f.text_field :competition_id, type: :text, value: @user.rsfi_id, class: 'form-control', readonly: true %>
+      </div>
 
+      <div class="form-group">
       <%= f.label "Full Name: "%>
       <%= f.text_field :full_name, value: @user.id, class: 'form-control', readonly: true%>
+      </div>
 
+      <div class="form-group">
       <%= f.label "DOB: "%>
       <%= f.text_field :dob, value: @user.dob, class: 'form-control', readonly: true%>
+      </div>
 
+      <div class="form-group">
       <%= f.label "Gender: "%>
       <%= f.text_field :gender, value: @user.gender, class: 'form-control', readonly: true%>
+      </div>
 
+      <div class="form-group">
       <%= f.label "Mobile: "%>
       <%= f.text_field :mobile, value: @user.phone, class: 'form-control', readonly: true%>
+      </div>
 
+      <div class="form-group">
       <%= f.label "Email: "%>
       <%= f.text_field :email, value: @user.email, class: 'form-control', readonly: true%>
+      </div>
 
+      <div class="form-group">
       <%= f.label "Address: "%>
       <%= f.text_area :address, value: @user.address, class: 'form-control', readonly: true%>
+      </div>
 
+      <div class="form-group">
       <%= f.label "Pincode: "%>
       <%= f.text_field :pin_code, value: @user.pin_code, class: 'form-control', readonly: true%>
+      </div>
 
-    </div>
+    
 
   <% end %>
+  <br>
+  <button class="btn btn-brand"><%= link_to 'Edit', edit_user_path(@user.id) %></button>
+  <button class="btn btn-brand"><%= link_to 'Events', event_registrations_path(@user.id) %></button>
 
-  <%= link_to 'Edit', edit_user_path(@user.id) %>
 
-  <%= link_to 'Events', event_registrations_path(@user.id) %>
   </div>
-
+  </div>
+</div>
+</section>

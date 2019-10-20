@@ -1,41 +1,62 @@
 <%= simple_form_for @user do |f| %>
+  
     <div class="form-inputs" >
+    <div class="form-group">
       <%= f.label "RSFI ID: "%>
-      <%= f.text_field :rsfi_id, type: :text, value: @user.rsfi_id, class: 'form-control'%>
+      <%= f.text_field :rsfi_id, type: :text, value: @user.rsfi_id, class: 'input-text'%>
+    </div>
 
-      <%= f.label "Full Name: "%>
-      <%= f.text_field :full_name, value: @user.id, class: 'form-control' %>
-
-      <%= f.label "DOB: "%>
-      <%= f.date_field :dob, value: @user.dob, class: 'form-control' %>
-
-      <%= f.label "Gender: "%>
-      <%= f.text_field :gender, value: @user.gender, class: 'form-control' %>
-
-      <%= f.label "Mobile: "%>
-      <%= f.text_field :phone, value: @user.phone, class: 'form-control' %>
-
-      <%= f.label "Email: "%>
-      <%= f.text_field :email, value: @user.email, class: 'form-control' %>
-
-      <%= f.label "Address: "%>
-      <%= f.text_area :address, value: @user.address, class: 'form-control' %>
-
-      <div class="dropdown">
-        <%= f.label "District: "%>
-        <%= f.collection_select :district, DISTRICTS,:first,:last %>
+      <div class="form-group">
+        <%= f.label "Full Name: "%>
+        <%= f.text_field :full_name, value: @user.id, class: 'input-text' %>
       </div>
 
-      <%= f.label "Pincode: "%>
-      <%= f.text_field :pin_code, value: @user.pin_code, class: 'form-control' %>
+      <div class="form-group">
+        <%= f.label "DOB: "%>
+        <%= f.date_field :dob, value: @user.dob, class: 'input-text' %>
+      </div>
 
-      <div class="dropdown">
-        <%= f.label "Occupation: "%>
-        <%= f.collection_select :occupation, OCCUPATION,:first,:last %>
+      <div class="form-group">
+        <%= f.label "Gender: "%>
+        <%= f.text_field :gender, value: @user.gender, class: 'input-text' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Mobile: "%>
+        <%= f.text_field :phone, value: @user.phone, class: 'input-text' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Email: "%>
+        <%= f.text_field :email, value: @user.email, class: 'input-text' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Address: "%>
+        <%= f.text_area :address, value: @user.address, class: 'input-text' %>
+      </div>
+
+      <div class="form-group">
+        <div class="dropdown">
+          <%= f.label "District: "%>
+          <%= f.collection_select :district, DISTRICTS,:first,:last, {}, {class: 'input-text'} %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Pincode: "%>
+        <%= f.text_field :pin_code, value: @user.pin_code, class: 'input-text', maxlength:6 %>
+      </div>
+
+      <div class="form-group">
+        <div class="dropdown">
+          <%= f.label "Occupation: "%>
+          <%= f.collection_select :occupation, OCCUPATION,:first,:last, {}, {class: 'input-text'}  %>
+        </div>
       </div>
     </div>
 
     <div class="form-inputs" >
-        <%= f.button :submit, 'Submit', class: 'btn btn-primary' %>
+        <%= f.button :submit, 'Submit', class: 'btn btn-brand btn-block mb-4' %>
     </div>
 <% end %>
