@@ -67,8 +67,22 @@
   <script src="https://harvesthq.github.io/chosen/chosen.jquery.js"></script>
 
   <script>
-  debugger
     $('select').chosen();
+    let checkbox_limit = 2;
+    $('[name="event_registration[discipline_id]"]').on('change', (e) => {
+        if($(e.target).val() === "2") checkbox_limit = 3;
+        $('[name="event_registration[events][]"]').prop('checked', false);
+    });
+
+    $('[name="event_registration[events][]"]').on('change', (e) => {
+      if ($(e.target).prop('type') === "checkbox") {
+        if($('[name="event_registration[events][]"]:checked').length > checkbox_limit) {
+          $(e.target).prop('checked', false);
+          alert(`only ${checkbox_limit} can be selected!`);
+        }
+      }  
+    });
+
   </script>
   
 </body>
