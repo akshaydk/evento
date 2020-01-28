@@ -13,7 +13,7 @@ gem 'devise', '~> 4.7', '>= 4.7.1'
 # gem 'mysql2', '~> 0.5.2'
 gem 'turbolinks'
 gem 'coffee-rails'
-gem 'simple_form', '~> 4.1'
+gem 'simple_form', '~> 5.0'
 gem 'pg', '~> 1.1', '>= 1.1.4'
 
 group :development, :test do
